@@ -9,6 +9,19 @@ class twCorporativo extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'S_NombreCorto',
+        'S_NombreCompleto',
+        'S_LogoURL',
+        'S_DBName',
+        'S_DBUsuario',
+        'S_DBPassword',
+        'A_Activo',
+        'created_at',
+        'updated_at',
+        'tw_usuarios_id'
+    ];
+
     //relacion uno a muchos(inversa)
     public function usuario(){
         return $this->belongsTo('App\Models\twUsuario');
