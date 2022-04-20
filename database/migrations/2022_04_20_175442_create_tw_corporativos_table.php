@@ -24,7 +24,7 @@ class CreateTwCorporativosTable extends Migration
             $table->boolean('A_Activo')->default(1);
             $table->timestamp('created_at');
             $table->timestamp('updated_at')->nullable();
-            $table->timestamp('deleted_at')->nullable();
+            $table->softDeletes();
 
             $table->unsignedBigInteger('tw_usuarios_id');
             $table->foreign('tw_usuarios_id')->references('id')->on('tw_usuarios');

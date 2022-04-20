@@ -30,7 +30,7 @@ class CreateTwEmpresasCorporativosTable extends Migration
             $table->string('S_Comentarios', 255);
             $table->timestamp('created_at');
             $table->timestamp('updated_at')->nullable();
-            $table->timestamp('deleted_at')->nullable();
+            $table->softDeletes();
 
             $table->unsignedBigInteger('tw_corporativos_id');
             $table->foreign('tw_corporativos_id')->references('id')->on('tw_corporativos');
