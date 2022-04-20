@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class twDocumento extends Model
 {
     use HasFactory;
+
+    //relacion de muchos a muchos
+    public function corporativo(){
+        return $this->belongsToMany('App\Models\twCorporativo');
+    }
 }

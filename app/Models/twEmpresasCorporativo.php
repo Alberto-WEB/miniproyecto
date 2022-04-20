@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class twEmpresasCorporativo extends Model
 {
     use HasFactory;
+
+    
+    //relacion uno a muchos (inversa)
+    public function corporativo(){
+        return $this->belongsTo('App\Models\twCorporativo');
+    }
+
+    //relacion uno a muchos
+    public function contactosCorporativo(){
+        return $this->hasMany('App\Models\twContactosCorporativo');
+    }
 }

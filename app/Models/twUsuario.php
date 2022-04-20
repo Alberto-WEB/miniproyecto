@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class twUsuario extends Model
 {
     use HasFactory;
+
+    //relacion uno a muchos
+    public function corporativo(){
+        return $this->hasMany('App\Models\twCorporativo');
+    }
 }
