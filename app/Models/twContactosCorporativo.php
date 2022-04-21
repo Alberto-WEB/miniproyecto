@@ -9,9 +9,13 @@ class twContactosCorporativo extends Model
 {
     use HasFactory;
 
-     //relacion uno a muchos (inversa)
-     public function empresasCorporativo(){
-        return $this->belongsTo('App\Models\twEmpresasCorporativo');
+    protected $fillable = [
+        'tw_corporativos_id',
+    ];
+    
+    //relacion uno a muchos (inversa)
+    public function corporativo(){
+        return $this->belongsTo(twCorporativo::class, 'tw_corporativos_id');
     }
 
 }

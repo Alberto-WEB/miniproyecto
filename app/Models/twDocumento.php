@@ -11,6 +11,6 @@ class twDocumento extends Model
 
     //relacion de muchos a muchos
     public function corporativo(){
-        return $this->belongsToMany('App\Models\twCorporativo');
+        return $this->belongsToMany(twCorporativo::class);
     }
 }

@@ -24,21 +24,26 @@ class twCorporativo extends Model
 
     //relacion uno a muchos(inversa)
     public function usuario(){
-        return $this->belongsTo('App\Models\twUsuario');
+        return $this->belongsTo(twUsuario::class, 'tw_usuarios_id');
     }
 
     //relacion uno a muchos
     public function empresasCorporativo(){
-        return $this->hasMany('App\Models\twEmpresasCorporativo');
+        return $this->hasMany(twEmpresasCorporativo::class, 'id');
     }
 
     //relacion muchos a muchos
     public function documento(){
-        return $this->belongsToMany('App\Models\twDocumento');
+        return $this->belongsToMany(twDocumento::class);
     }
 
     //relacion uno a muchos
     public function contratosCorporativo(){
-        return $this->hasMany('App\Models\twContratosCorporativo');
+        return $this->hasMany(twContratosCorporativo::class, 'id');
+    }
+
+    //relacion uno a muchos
+    public function contactosCorporativo(){
+        return $this->hasMany(twContactosCorporativo::class, 'id');
     }
 }
