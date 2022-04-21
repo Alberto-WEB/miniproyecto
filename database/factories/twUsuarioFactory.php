@@ -24,7 +24,6 @@ class twUsuarioFactory extends Factory
             'verification_token' => $this->faker->md5(),
             'verified' => 'DISABLED',
             'created_at' => $this->faker->dateTimeThisMonth(),
-            'updated_at' => $this->faker->dateTimeThisMonth(),
 
            /*  'username' => 'CarlosDev',
             'email' => 'carlos@gmail.com',
