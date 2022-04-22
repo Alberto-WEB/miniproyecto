@@ -18,9 +18,17 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'username',
         'email',
+        'S_Nombre',
+        'S_Apellidos',
+        'S_FotoPerfilUrl',
+        'S_Activo',
         'password',
+        'verification_token',
+        'verified',
+        'created_at',
+        'updated_at'
     ];
 
     /**
@@ -30,15 +38,13 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
+        'verification_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    
+    //relacion uno a muchos
+    public function corporativo(){
+        return $this->hasMany(twCorporativo::class, 'id');
+    }
+
 }
