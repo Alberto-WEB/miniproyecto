@@ -22,7 +22,7 @@ class twCorporativoFactory extends Factory
             'S_DBPassword' => $this->faker->password(),
             'A_Activo' => $this->faker->boolean(),
             'created_at' => $this->faker->dateTimeThisMonth(),
-            'tw_usuarios_id' => $this->faker->randomElement([1,2,3,4,5,6,7,8,9,10]),
+            'user_id' => $this->faker->randomElement([1,2,3,4,5,6,7,8,9,10]),
         ];
 
     }
