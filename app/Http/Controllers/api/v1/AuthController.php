@@ -12,25 +12,24 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-    public function login(Request $request){
-        
-        $request->validate([
-            'email' => 'required|email',
+    
+    public function login(Request $request)
+    {
+        $data = $request->validate([
+            'email' => 'email|required',
             'password' => 'required'
         ]);
 
-        $user = User::where('email', $request->email)->first();
-
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            throw ValidationException::withMessages([
-                'email' => ['Las credenciales proporcionadas son incorrectas']
-            ]);
+        if (!auth()->attempt($data)) {
+            return response()->json([
+                'error_message' => 'Datos incorrectos'
+        ], 422);
         }
 
-        $token->createToken('Auth Token')->accessToken;
+        $token = auth()->user()->createToken('API Token')->accessToken;
 
         return response()->json([
-            'user' => $user,
+            'user' => Auth::user(),
             'token_type' => 'Bearer',
             'access_token' => $token,
         ], 200);
