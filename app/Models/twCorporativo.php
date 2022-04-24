@@ -19,12 +19,12 @@ class twCorporativo extends Model
         'A_Activo',
         'created_at',
         'updated_at',
-        'user_id'
+        'tw_usuarios_id'
     ];
 
     //relacion uno a muchos(inversa)
     public function user(){
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'tw_usuarios_id');
     }
 
     //relacion uno a muchos

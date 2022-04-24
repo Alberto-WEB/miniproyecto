@@ -26,8 +26,8 @@ class CreateTwCorporativosTable extends Migration
             $table->timestamp('updated_at')->nullable();
             $table->softDeletes(); // deleted_at
 
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('tw_usuarios_id');
+            $table->foreign('tw_usuarios_id')->references('id')->on('tw_usuarios');
         });
     }
 
