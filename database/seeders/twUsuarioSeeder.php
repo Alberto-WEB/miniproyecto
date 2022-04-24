@@ -14,6 +14,6 @@ class twUsuarioSeeder extends Seeder
      */
     public function run()
     {
-        //twUsuario::factory(10)->create();
+        twUsuario::factory(10)->create();
     }
 }

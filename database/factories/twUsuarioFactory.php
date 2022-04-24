@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class twUsuarioFactory extends Factory
@@ -20,8 +21,8 @@ class twUsuarioFactory extends Factory
             'S_Apellidos' => $this->faker->lastName(),
             'S_FotoPerfilUrl' => $this->faker->url(),
             //'S_Activo' => $this->faker->boolean(),
-            'password' => '12345',
-            'verification_token' => $this->faker->md5(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'verification_token' => Str::random(10),
             'verified' => 'DISABLED',
             'created_at' => $this->faker->dateTimeThisMonth(),
 

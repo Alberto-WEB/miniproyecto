@@ -15,7 +15,7 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'username' => $this->faker->name(),
+           /*  'username' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'S_Nombre' => $this->faker->name(),
             'S_Apellidos' => $this->faker->lastName(),
@@ -24,7 +24,7 @@ class UserFactory extends Factory
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'verification_token' => Str::random(10),
             'verified' => 'DISABLED',
-            'created_at' => $this->faker->dateTimeThisMonth(),
+            'created_at' => $this->faker->dateTimeThisMonth(), */
         ];
     }
 
