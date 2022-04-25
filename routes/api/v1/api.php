@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\v1\AuthController;
 use App\Http\Controllers\api\v1\NewPasswordController;
 use App\Http\Controllers\api\v1\TwCorporativosController;
+use App\Http\Controllers\api\v1\TwEmpresasCorporativoController;
 use App\Http\Controllers\api\v1\TwUsuariosController;
 
 //Authentication
@@ -32,4 +33,13 @@ Route::prefix('corporativos')->group(function () {
     Route::get('/show/{id}', [TwCorporativosController::class, 'show'])->middleware('auth:api');
     Route::put('/update/{id}', [TwCorporativosController::class, 'update'])->middleware('auth:api');
     Route::delete('/delete/{id}', [TwCorporativosController::class, 'destroy'])->middleware('auth:api');
+});
+
+//CRUD tw_empresas_corporativos
+Route::prefix('empresas-corporativos')->group(function () {
+    Route::get('/list', [TwEmpresasCorporativoController::class, 'index'])->middleware('auth:api');
+    Route::post('/create', [TwEmpresasCorporativoController::class, 'store'])->middleware('auth:api');
+    Route::get('/show/{id}', [TwEmpresasCorporativoController::class, 'show'])->middleware('auth:api');
+    Route::put('/update/{id}', [TwEmpresasCorporativoController::class, 'update'])->middleware('auth:api');
+    Route::delete('/delete/{id}', [TwEmpresasCorporativoController::class, 'destroy'])->middleware('auth:api');
 });
