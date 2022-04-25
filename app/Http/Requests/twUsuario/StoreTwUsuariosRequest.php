@@ -4,7 +4,7 @@ namespace App\Http\Requests\twUsuario;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends FormRequest
+class StoreTwUsuariosRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'username' => 'required',
-            'email' => 'required|string|email',
+            'email' => 'required|string|email|unique:tw_usuarios',
             'S_Nombre' => 'required',
             'S_Apellidos' => 'required',
             'password' => 'required|min:8',
@@ -37,10 +37,11 @@ class UpdateRequest extends FormRequest
         return [ 
             'username.required' => 'Es necesario que ingreses tu nombre de usuario',
             'email.required' => 'Es necesario que ingreses tu corre electronico',
+            'email.unique' => 'El correo que intenta registrar ya existe, prueba con otro',
             'email.email' => 'El formato del email es incorrecto',
             'S_Nombre.required' => 'Es necesario que ingreses tu nombre',
             'S_Apellidos.required' => 'Es necesario que ingreses tus apellidos',
-            'password.required' => 'Es necesario que ingrese tu password',
+            'password.required' => 'Es necesario que ingreses tu password',
             'password.min' => 'tu password debe incluir al menos 8 caracteres',
         ];
     }

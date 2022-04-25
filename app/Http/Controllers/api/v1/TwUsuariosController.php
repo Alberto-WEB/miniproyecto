@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\api\v1;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\twUsuario\CreateRequest;
-use App\Http\Requests\twUsuario\UpdateRequest;
 use App\Models\twUsuario;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\twUsuario\StoreTwUsuariosRequest;
+use App\Http\Requests\twUsuario\UpdateTwUsuariosRequest;
 
 class TwUsuariosController extends Controller
 {
@@ -32,7 +32,7 @@ class TwUsuariosController extends Controller
     }
 
     
-    public function store(CreateRequest $request)
+    public function store(StoreTwUsuariosRequest $request)
     {
         try {
             
@@ -122,7 +122,7 @@ class TwUsuariosController extends Controller
     }
 
     
-    public function update(UpdateRequest $request, $id)
+    public function update(UpdateTwUsuariosRequest $request, $id)
     {
         try {
             
@@ -198,7 +198,7 @@ class TwUsuariosController extends Controller
                     'time_execution' => microtime()
                         ], 404);
                     }
-                    
+
                 $user->delete();
 
                 return response()->json([
