@@ -20,7 +20,9 @@ class twCorporativoFactory extends Factory
             'S_DBName' => $this->faker->name(),
             'S_DBUsuario' => $this->faker->name(),
             'S_DBPassword' => $this->faker->password(),
-            'A_Activo' => $this->faker->boolean(),
+            'S_SystemUrl' => $this->faker->url(),
+            //'S_Activo' => $this->faker->boolean(),
+            'D_FechaIncorporacion' => $this->faker->dateTimeThisMonth(),
             'created_at' => $this->faker->dateTimeThisMonth(),
             //'tw_usuarios_id' => $this->faker->randomElement([1,2,3,4,5,6,7,8,9,10]),
             'tw_usuarios_id' => \App\Models\twUsuario::factory()

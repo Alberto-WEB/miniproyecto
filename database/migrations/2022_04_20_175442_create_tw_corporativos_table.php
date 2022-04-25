@@ -21,7 +21,9 @@ class CreateTwCorporativosTable extends Migration
             $table->string('S_DBName', 45);
             $table->string('S_DBUsuario', 45);
             $table->string('S_DBPassword', 150);
-            $table->boolean('A_Activo')->default(1);
+            $table->string('S_SystemUrl', 255);
+            $table->boolean('S_Activo')->default(1);
+            $table->timestamp('D_FechaIncorporacion');
             $table->timestamp('created_at');
             $table->timestamp('updated_at')->nullable();
             $table->softDeletes(); // deleted_at
