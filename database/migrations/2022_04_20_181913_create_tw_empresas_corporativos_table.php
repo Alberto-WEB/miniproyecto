@@ -26,8 +26,8 @@ class CreateTwEmpresasCorporativosTable extends Migration
             $table->string('S_UsoCFDI', 45)->nullable();
             $table->string('S_UrlRFC', 255)->nullable();
             $table->string('S_UrlActaConstitutiva', 255)->nullable();
-            $table->boolean('A_Activo')->default(1);
-            $table->string('S_Comentarios', 255);
+            $table->boolean('S_Activo')->default(1);
+            $table->string('S_Comentarios', 255)->nullable();
             $table->timestamp('created_at');
             $table->timestamp('updated_at')->nullable();
             $table->softDeletes();
