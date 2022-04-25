@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use Laravel\Passport\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Notifications\ResetPasswordNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Passport\HasApiTokens;
 
 class twUsuario extends Authenticatable
 {
@@ -47,6 +48,13 @@ class twUsuario extends Authenticatable
     //relacion uno a muchos
     public function corporativo(){
         return $this->hasMany(twCorporativo::class, 'id');
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $url = 'http://miniproyecto.test/reset-password?token=' . $token;
+
+        $this->notify(new ResetPasswordNotification($url));
     }
 
 }
