@@ -56,7 +56,7 @@ class TwUsuariosController extends Controller
                     'msgError' => null
                 ],
                 'time_execution' => microtime()
-            ], 200);
+            ], 201);
 
         } catch (\Exception $exception) {
             return response()->json([
