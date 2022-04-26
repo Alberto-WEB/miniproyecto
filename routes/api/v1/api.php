@@ -6,6 +6,7 @@ use App\Http\Controllers\api\v1\AuthController;
 use App\Http\Controllers\api\v1\NewPasswordController;
 use App\Http\Controllers\api\v1\TwContratosCorporativoController;
 use App\Http\Controllers\api\v1\TwCorporativosController;
+use App\Http\Controllers\api\v1\TwDocumentosController;
 use App\Http\Controllers\api\v1\TwEmpresasCorporativoController;
 use App\Http\Controllers\api\v1\TwUsuariosController;
 
@@ -52,4 +53,13 @@ Route::prefix('contratos-corporativos')->group(function () {
     Route::get('/show/{id}', [TwContratosCorporativoController::class, 'show'])->middleware('auth:api');
     Route::put('/update/{id}', [TwContratosCorporativoController::class, 'update'])->middleware('auth:api');
     Route::delete('/delete/{id}', [TwContratosCorporativoController::class, 'destroy'])->middleware('auth:api');
+});
+
+//CRUD tw_documentos
+Route::prefix('documentos')->group(function () {
+    Route::get('/list', [TwDocumentosController::class, 'index'])->middleware('auth:api');
+    Route::post('/create', [TwDocumentosController::class, 'store'])->middleware('auth:api');
+    Route::get('/show/{id}', [TwDocumentosController::class, 'show'])->middleware('auth:api');
+    Route::put('/update/{id}', [TwDocumentosController::class, 'update'])->middleware('auth:api');
+    Route::delete('/delete/{id}', [TwDocumentosController::class, 'destroy'])->middleware('auth:api');
 });
