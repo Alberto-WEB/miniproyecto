@@ -24,6 +24,7 @@ class twUsuarioFactory extends Factory
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'verification_token' => Str::random(10),
             'verified' => 'DISABLED',
+            'rol_usuario' => $this->faker->randomElement([1,2,3]),
             'created_at' => $this->faker->dateTimeThisMonth(),
 
            /*  'username' => 'CarlosDev',

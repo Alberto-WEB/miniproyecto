@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use phpDocumentor\Reflection\Types\Nullable;
 
 class CreateTwUsuariosTable extends Migration
 {
@@ -24,6 +25,7 @@ class CreateTwUsuariosTable extends Migration
             $table->string('password', 100);
             $table->string('verification_token', 191)->nullable();
             $table->string('verified', 191);
+            $table->integer('rol_usuario')->nullable();
             $table->timestamp('created_at');
             $table->timestamp('updated_at')->nullable();
             $table->softDeletes();
