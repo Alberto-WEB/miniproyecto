@@ -13,7 +13,7 @@ class UpdateTwContratosCorporativosRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,20 @@ class UpdateTwContratosCorporativosRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'D_FechaInicio' => 'required|date',
+            'D_FechaFin' => 'required',
+            //'S_URLContrato' => 'required|url',
+        ];
+    }
+
+    public function messages()
+    {
+        return [ 
+            'D_FechaInicio.required' => 'Es necesario que ingreses la fecha de inicio',
+            'D_FechaInicio.date' => 'Es necesario que ingreses una fecha valida',
+            'D_FechaFin.required' => 'Es necesario que ingreses la hora de finalizacion',
+            'S_URLContrato.required' => 'Es necesario que ingreses la url de tu contrato',
+            'S_URLContrato.url' => 'Ingresa correctamente tu URL por ejemplo, https://ejemplo.com/',
         ];
     }
 }
