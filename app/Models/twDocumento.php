@@ -22,4 +22,9 @@ class twDocumento extends Model
     public function corporativo(){
         return $this->belongsToMany(twCorporativo::class);
     }
+
+    /* //relacion uno a muchos
+    public function documentosCorporativo(){
+        return $this->hasMany(twDocumentosCorporativo::class, 'id');
+    } */
 }

@@ -46,4 +46,9 @@ class twCorporativo extends Model
     public function contactosCorporativo(){
         return $this->hasMany(twContactosCorporativo::class, 'id');
     }
+
+   /*  //relacion uno a muchos
+    public function documentosCorporativo(){
+        return $this->hasMany(twDocumentosCorporativo::class, 'id');
+    } */
 }
