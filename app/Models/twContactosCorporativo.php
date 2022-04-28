@@ -10,8 +10,17 @@ class twContactosCorporativo extends Model
     use HasFactory;
 
     protected $fillable = [
+        'S_Nombre',
+        'S_Puesto',
+        'S_Comentarios',
+        'N_TelefonoFijo',
+        'N_TelefonoMovil',
+        'S_Email',
         'tw_corporativos_id',
     ];
+
+    const UPDATED_AT = null;
+    const CREATED_AT = null;
     
     //relacion uno a muchos (inversa)
     public function corporativo(){
