@@ -32,13 +32,22 @@ class AuthController extends Controller
             ], 422);
             }
 
-            $token = auth()->user()->createToken('API Token')->accessToken;
+            $user = Auth::user();
+
+            //dd($user);
+
+            //add role as scope
+            $userRole = $user->rol_usuario;
+            //dd($userRole);
+
+            $token = $user->createToken($user->email . ' ' . now(), [$userRole]);
+            //dd($token);
 
             return response()->json([
                 'msg' => 'OK',
                 'success' => true,
                 'data' => Auth::user(),
-                'access_token' => $token,
+                'access_token' => $token->accessToken,
                 'exeptions' => [
                     'msgError' => null
                 ],
