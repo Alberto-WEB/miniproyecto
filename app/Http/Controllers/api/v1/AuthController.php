@@ -47,7 +47,7 @@ class AuthController extends Controller
                 'msg' => 'OK',
                 'success' => true,
                 'data' => Auth::user(),
-                'access_token' => $token->accessToken,
+                'accessToken' => $token,
                 'exeptions' => [
                     'msgError' => null
                 ],
