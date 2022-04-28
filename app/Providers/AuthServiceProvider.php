@@ -27,5 +27,11 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
         Passport::routes();
         //
+
+        Passport::tokensCan([
+            '1' => 'Add/Edit/Show/Update/Delete tw_corporativos , Add/Edit/Show/Update/Delete tw_empresas_corporativos, Add/Edit/Show/Update/Delete tw_usuarios',
+            '2' => 'Add/Edit/Show/Update/Delete tw_contratos_corporativos , Add/Edit/Show/Update/Delete tw_contactos_corporativos, Add/Edit/Show/Update/Delete tw_usuarios',
+            '3' => 'Add/Edit/Show/Update/Delete tw_documentos , Add/Edit/Show/Update/Delete tw_documentos_corporativos, Add/Edit/Show/Update/Delete tw_usuarios',
+        ]);
     }
 }
