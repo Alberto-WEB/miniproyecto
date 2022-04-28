@@ -227,4 +227,14 @@ class TwCorporativosController extends Controller
             }
     }
 
+    public function corporativo($id){
+        
+        $corporativo = twCorporativo::find($id);
+        $corporativo = twCorporativo::join('tw_contactos_corporativos', 'tw_contactos_corporativos.tw_corporativos_id', '=', 'tw_corporativos.id')
+                                        ->join('tw_contratos_corporativos', 'tw_contratos_corporativos.tw_corporativos_id', '=', 'tw_corporativos.id')
+                                        ->get(['tw_corporativos.*', 'tw_contactos_corporativos.*']);
+        dd($corporativo);
+                                        return $corporativo;
+    }
+
 }
