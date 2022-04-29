@@ -8,6 +8,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\twCorporativo\StoreTwCorporativosRequest;
 use App\Http\Requests\twCorporativo\UpdateTwCorporativosRequest;
+use App\Models\twContactosCorporativo;
+use App\Models\twContratosCorporativo;
+use App\Models\twDocumento;
+use App\Models\twDocumentosCorporativo;
+use App\Models\twEmpresasCorporativo;
+use Illuminate\Support\Facades\DB;
 
 class TwCorporativosController extends Controller
 {
@@ -230,11 +236,33 @@ class TwCorporativosController extends Controller
     public function corporativo($id){
         
         $corporativo = twCorporativo::find($id);
-        $corporativo = twCorporativo::join('tw_contactos_corporativos', 'tw_contactos_corporativos.tw_corporativos_id', '=', 'tw_corporativos.id')
-                                        ->join('tw_contratos_corporativos', 'tw_contratos_corporativos.tw_corporativos_id', '=', 'tw_corporativos.id')
-                                        ->get(['tw_corporativos.*', 'tw_contactos_corporativos.*']);
-        dd($corporativo);
-                                        return $corporativo;
+        $empresasCorporativo = twEmpresasCorporativo::find($id);
+        $contactosCorporativo = twContactosCorporativo::find($id);
+        $contratosCorporativo = twContratosCorporativo::find($id);
+        //$documentosCorporativo = twDocumentosCorporativo::find($id);
+        //$documentos = twDocumento::find($id);
+        $documentosCorporativo = DB::table('tw_corporativos as twc')
+                                ->join('tw_documentos_corporativos as twdc', 'twc.id', '=', 'twdc.tw_corporativos_id')
+                                ->join('tw_documentos as twd', 'twdc.tw_documentos_id', '=', 'twd.id')
+                                ->select('twd.S_Nombre', 'twdc.S_ArchivoUrl')
+                                ->get();
+                
+        return response()->json([
+                    'msg' => 'OK',
+                    'success' => true,
+                    'data' => [
+                        'Corporativo' => $corporativo,
+                        'tw_empresas_corporativo' => $empresasCorporativo,
+                        'tw_contactos_corporativo' => $contactosCorporativo,
+                        'tw_contratos_corporativo' => $contratosCorporativo,
+                        'tw_documentos_corporativo' => $documentosCorporativo,
+                        //'tw_documentos' => $documentos,
+                    ],
+                    'exeptions' => [
+                        'msgError' => null
+                    ],
+                    'time_execution' => microtime()
+                ], 200);
     }
 
 }
