@@ -22,66 +22,66 @@ Route::post('forgot-password', [NewPasswordController::class, 'forgotPassword'])
 Route::post('reset-password', [NewPasswordController::class, 'resetPassword']);
 
 //CRUD tw_usuarios
-Route::prefix('usuarios')->group(function () {
-    Route::get('/list', [TwUsuariosController::class, 'index'])->middleware('auth:api');
-    Route::post('/create', [TwUsuariosController::class, 'store'])->middleware('auth:api');
-    Route::get('/show/{id}', [TwUsuariosController::class, 'show'])->middleware('auth:api');
-    Route::put('/update/{id}', [TwUsuariosController::class, 'update'])->middleware('auth:api');
-    Route::delete('/delete/{id}', [TwUsuariosController::class, 'destroy'])->middleware('auth:api');
+Route::group(['prefix' => 'usuarios', 'middleware' => ['auth:api']], function(){
+    Route::get('/list', [TwUsuariosController::class, 'index']);
+    Route::post('/create', [TwUsuariosController::class, 'store']);
+    Route::get('/show/{id}', [TwUsuariosController::class, 'show']);
+    Route::put('/update/{id}', [TwUsuariosController::class, 'update']);
+    Route::delete('/delete/{id}', [TwUsuariosController::class, 'destroy']);
 });
 
 //CRUD tw_corporativos
-Route::prefix('corporativos')->group(function () {
-    Route::get('/list', [TwCorporativosController::class, 'index'])->middleware('auth:api', 'scope:1');
-    Route::post('/create', [TwCorporativosController::class, 'store'])->middleware('auth:api', 'scope:1');
-    Route::get('/show/{id}', [TwCorporativosController::class, 'show'])->middleware('auth:api', 'scope:1');
-    Route::put('/update/{id}', [TwCorporativosController::class, 'update'])->middleware('auth:api', 'scope:1');
-    Route::delete('/delete/{id}', [TwCorporativosController::class, 'destroy'])->middleware('auth:api', 'scope:1');
-    Route::get('/corporativo/{id}', [TwCorporativosController::class, 'corporativo'])->middleware('auth:api', 'scope:1');
+Route::group(['prefix' => 'corporativos', 'middleware' => ['auth:api', 'scope:1']], function(){
+    Route::get('/list', [TwCorporativosController::class, 'index']);
+    Route::post('/create', [TwCorporativosController::class, 'store']);
+    Route::get('/show/{id}', [TwCorporativosController::class, 'show']);
+    Route::put('/update/{id}', [TwCorporativosController::class, 'update']);
+    Route::delete('/delete/{id}', [TwCorporativosController::class, 'destroy']);
+    Route::get('/corporativo/{id}', [TwCorporativosController::class, 'corporativo']);
 });
-
 
 //CRUD tw_empresas_corporativos
-Route::prefix('empresas-corporativos')->group(function () {
-    Route::get('/list', [TwEmpresasCorporativoController::class, 'index'])->middleware('auth:api', 'scope:1');
-    Route::post('/create', [TwEmpresasCorporativoController::class, 'store'])->middleware('auth:api', 'scope:1');
-    Route::get('/show/{id}', [TwEmpresasCorporativoController::class, 'show'])->middleware('auth:api', 'scope:1');
-    Route::put('/update/{id}', [TwEmpresasCorporativoController::class, 'update'])->middleware('auth:api', 'scope:1');
-    Route::delete('/delete/{id}', [TwEmpresasCorporativoController::class, 'destroy'])->middleware('auth:api', 'scope:1');
+Route::group(['prefix' => 'empresas-corporativos', 'middleware' => ['auth:api', 'scope:1']], function(){
+    Route::get('/list', [TwEmpresasCorporativoController::class, 'index']);
+    Route::post('/create', [TwEmpresasCorporativoController::class, 'store']);
+    Route::get('/show/{id}', [TwEmpresasCorporativoController::class, 'show']);
+    Route::put('/update/{id}', [TwEmpresasCorporativoController::class, 'update']);
+    Route::delete('/delete/{id}', [TwEmpresasCorporativoController::class, 'destroy']);
 });
 
+
 //CRUD tw_contratos_corporativos
-Route::prefix('contratos-corporativos')->group(function () {
-    Route::get('/list', [TwContratosCorporativoController::class, 'index'])->middleware('auth:api', 'scope:2');
-    Route::post('/create', [TwContratosCorporativoController::class, 'store'])->middleware('auth:api', 'scope:2');
-    Route::get('/show/{id}', [TwContratosCorporativoController::class, 'show'])->middleware('auth:api', 'scope:2');
-    Route::put('/update/{id}', [TwContratosCorporativoController::class, 'update'])->middleware('auth:api', 'scope:2');
-    Route::delete('/delete/{id}', [TwContratosCorporativoController::class, 'destroy'])->middleware('auth:api', 'scope:2');
+Route::group(['prefix' => 'contratos-corporativos', 'middleware' => ['auth:api', 'scope:2']], function(){
+    Route::get('/list', [TwContratosCorporativoController::class, 'index']);
+    Route::post('/create', [TwContratosCorporativoController::class, 'store']);
+    Route::get('/show/{id}', [TwContratosCorporativoController::class, 'show']);
+    Route::put('/update/{id}', [TwContratosCorporativoController::class, 'update']);
+    Route::delete('/delete/{id}', [TwContratosCorporativoController::class, 'destroy']);
 });
 
 //CRUD tw_contactos_corporativos
-Route::prefix('contactos-corporativos')->group(function () {
-    Route::get('/list', [TwContactosCorporativoController::class, 'index'])->middleware('auth:api', 'scope:2');
-    Route::post('/create', [TwContactosCorporativoController::class, 'store'])->middleware('auth:api', 'scope:2');
-    Route::get('/show/{id}', [TwContactosCorporativoController::class, 'show'])->middleware('auth:api', 'scope:2');
-    Route::put('/update/{id}', [TwContactosCorporativoController::class, 'update'])->middleware('auth:api', 'scope:2');
-    Route::delete('/delete/{id}', [TwContactosCorporativoController::class, 'destroy'])->middleware('auth:api', 'scope:2');
+Route::group(['prefix' => 'contactos-corporativos', 'middleware' => ['auth:api', 'scope:2']], function(){
+    Route::get('/list', [TwContactosCorporativoController::class, 'index']);
+    Route::post('/create', [TwContactosCorporativoController::class, 'store']);
+    Route::get('/show/{id}', [TwContactosCorporativoController::class, 'show']);
+    Route::put('/update/{id}', [TwContactosCorporativoController::class, 'update']);
+    Route::delete('/delete/{id}', [TwContactosCorporativoController::class, 'destroy']);
 });
 
 //CRUD tw_documentos
-Route::prefix('documentos')->group(function () {
-    Route::get('/list', [TwDocumentosController::class, 'index'])->middleware('auth:api', 'scope:3');
-    Route::post('/create', [TwDocumentosController::class, 'store'])->middleware('auth:api', 'scope:3');
-    Route::get('/show/{id}', [TwDocumentosController::class, 'show'])->middleware('auth:api', 'scope:3');
-    Route::put('/update/{id}', [TwDocumentosController::class, 'update'])->middleware('auth:api', 'scope:3');
-    Route::delete('/delete/{id}', [TwDocumentosController::class, 'destroy'])->middleware('auth:api', 'scope:3');
+Route::group(['prefix' => 'documentos', 'middleware' => ['auth:api', 'scope:3']], function(){
+    Route::get('/list', [TwDocumentosController::class, 'index']);
+    Route::post('/create', [TwDocumentosController::class, 'store']);
+    Route::get('/show/{id}', [TwDocumentosController::class, 'show']);
+    Route::put('/update/{id}', [TwDocumentosController::class, 'update']);
+    Route::delete('/delete/{id}', [TwDocumentosController::class, 'destroy']);
 });
 
 //CRUD tw_documentos_corporativos
-Route::prefix('documentos-corporativos')->group(function () {
-    Route::get('/list', [TwDocumentosCorporativoController::class, 'index'])->middleware('auth:api', 'scope:3');
-    Route::post('/create', [TwDocumentosCorporativoController::class, 'store'])->middleware('auth:api', 'scope:3');
-    Route::get('/show/{id}', [TwDocumentosCorporativoController::class, 'show'])->middleware('auth:api', 'scope:3');
-    Route::put('/update/{id}', [TwDocumentosCorporativoController::class, 'update'])->middleware('auth:api', 'scope:3');
-    Route::delete('/delete/{id}', [TwDocumentosCorporativoController::class, 'destroy'])->middleware('auth:api', 'scope:3');
+Route::group(['prefix' => 'documentos-corporativos', 'middleware' => ['auth:api', 'scope:3']], function(){
+    Route::get('/list', [TwDocumentosCorporativoController::class, 'index']);
+    Route::post('/create', [TwDocumentosCorporativoController::class, 'store']);
+    Route::get('/show/{id}', [TwDocumentosCorporativoController::class, 'show']);
+    Route::put('/update/{id}', [TwDocumentosCorporativoController::class, 'update']);
+    Route::delete('/delete/{id}', [TwDocumentosCorporativoController::class, 'destroy']);
 });
