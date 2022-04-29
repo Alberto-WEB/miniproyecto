@@ -37,8 +37,9 @@ Route::group(['prefix' => 'corporativos', 'middleware' => ['auth:api', 'scope:1'
     Route::get('/show/{id}', [TwCorporativosController::class, 'show']);
     Route::put('/update/{id}', [TwCorporativosController::class, 'update']);
     Route::delete('/delete/{id}', [TwCorporativosController::class, 'destroy']);
-    Route::get('/corporativo/{id}', [TwCorporativosController::class, 'corporativo']);
 });
+
+Route::get('/corporativo/{id}', [TwCorporativosController::class, 'corporativo']);
 
 //CRUD tw_empresas_corporativos
 Route::group(['prefix' => 'empresas-corporativos', 'middleware' => ['auth:api', 'scope:1']], function(){
