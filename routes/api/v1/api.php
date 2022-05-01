@@ -78,6 +78,8 @@ Route::group(['prefix' => 'documentos', 'middleware' => ['auth:api', 'scope:3']]
     Route::delete('/delete/{id}', [TwDocumentosController::class, 'destroy']);
 });
 
+Route::get('/documento/{id}', [TwDocumentosController::class, 'documento']);
+
 //CRUD tw_documentos_corporativos
 Route::group(['prefix' => 'documentos-corporativos', 'middleware' => ['auth:api', 'scope:3']], function(){
     Route::get('/list', [TwDocumentosCorporativoController::class, 'index']);

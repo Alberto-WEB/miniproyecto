@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\api\v1;
 
+use App\Models\twDocumento;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\twDocumento\StoreTwDocumentosRequest;
 use App\Http\Requests\twDocumento\UpdateTwDocumentosRequest;
-use App\Models\twDocumento;
-use Illuminate\Http\Request;
 
 class TwDocumentosController extends Controller
 {
@@ -207,5 +208,45 @@ class TwDocumentosController extends Controller
                     'time_execution' => microtime()
             ], 500);
             }
+    }
+
+    public function documento($id){
+        try {
+            
+            $documento = twDocumento::findOrFail($id);
+
+            $documentosCorporativo = DB::table('tw_corporativos as twc')
+            ->join('tw_documentos_corporativos as twdc', 'twc.id', '=', 'twdc.tw_corporativos_id')
+            ->join('tw_documentos as twd', 'twdc.tw_documentos_id', '=', 'twd.id')
+            ->where('twdc.tw_corporativos_id', $documento->id)
+            ->select('twd.S_Nombre', 'twdc.S_ArchivoUrl')
+            ->get();
+
+            return response()->json([
+                'msg' => 'OK',
+                'success' => true,
+                'data' => [
+                    //'documento' => $documento,
+                    'documentosCargados' => $documentosCorporativo
+                ],
+                'exeptions' => [
+                    'msgError' => null
+                ],
+                'time_execution' => microtime()
+            ], 200);
+
+        } catch (\Exception $exception) {
+            return response()->json([
+                'msg' => 'BAD',
+                'success' => false,
+                'data' => [
+                    'msgError' => 'Server error'
+                ],
+                'exeptions' => [
+                    'msgError' => $exception->getMessage()
+                ],
+                'time_execution' => microtime()
+        ], 500);
+        }
     }
 }
