@@ -151,12 +151,12 @@ return [
     'notifications' => [
 
         'notifications' => [
-            \Spatie\Backup\Notifications\Notifications\BackupHasFailed::class => ['slack'],
-            \Spatie\Backup\Notifications\Notifications\UnhealthyBackupWasFound::class => ['slack'],
-            \Spatie\Backup\Notifications\Notifications\CleanupHasFailed::class => ['slack'],
-            \Spatie\Backup\Notifications\Notifications\BackupWasSuccessful::class => ['slack'],
-            \Spatie\Backup\Notifications\Notifications\HealthyBackupWasFound::class => ['slack'],
-            \Spatie\Backup\Notifications\Notifications\CleanupWasSuccessful::class => ['slack'],
+            \Spatie\Backup\Notifications\Notifications\BackupHasFailed::class => ['mail'],
+            \Spatie\Backup\Notifications\Notifications\UnhealthyBackupWasFound::class => ['mail'],
+            \Spatie\Backup\Notifications\Notifications\CleanupHasFailed::class => ['mail'],
+            \Spatie\Backup\Notifications\Notifications\BackupWasSuccessful::class => ['mail'],
+            \Spatie\Backup\Notifications\Notifications\HealthyBackupWasFound::class => ['mail'],
+            \Spatie\Backup\Notifications\Notifications\CleanupWasSuccessful::class => ['mail'],
         ],
 
         /*
@@ -166,25 +166,25 @@ return [
         'notifiable' => \Spatie\Backup\Notifications\Notifiable::class,
 
         'mail' => [
-           /*  'to' => 'alberto.guzman.220793@gmail.com',
+            'to' => 'alberto.guzman.220793@gmail.com',
 
             'from' => [
                 'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
                 'name' => env('MAIL_FROM_NAME', 'Example'),
-            ], */
+            ],
         ],
 
         'slack' => [
-            'webhook_url' => 'https://hooks.slack.com/services/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',
+            //'webhook_url' => 'https://hooks.slack.com/services/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',
 
             /*
              * If this is set to null the default channel of the webhook will be used.
              */
-            'channel' => '#respaldos',
+            //'channel' => '#respaldos',
 
-            'username' => 'Carlos',
+            //'username' => 'Carlos',
 
-            'icon' => null,
+            //'icon' => null,
 
         ],
     ],

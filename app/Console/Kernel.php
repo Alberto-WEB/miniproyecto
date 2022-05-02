@@ -7,6 +7,11 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
+    // sincronizar la hora del server y sea la misma zona horaria
+    protected function scheduleTimezone()
+    {
+        return 'America/Mexico_City';
+    }
     /**
      * Define the application's command schedule.
      *
@@ -15,7 +20,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {   
-        $schedule->command('backup:clean')->daily()->at('12:00');
+        $schedule->command('backup:run')->everyFiveMinutes();
         // $schedule->command('inspire')->hourly();
     }
 
