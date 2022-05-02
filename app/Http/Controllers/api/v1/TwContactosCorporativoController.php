@@ -193,15 +193,7 @@ class TwContactosCorporativoController extends Controller
 
                 $contactoCorporativo->delete();
 
-                return response()->json([
-                    'msg' => 'OK',
-                    'success' => true,
-                    'data' => $contactoCorporativo,
-                    'exeptions' => [
-                        'msgError' => null
-                    ],
-                    'time_execution' => microtime()
-                ], 200);
+                return response()->json(null, 204);
 
             
             } catch (\Exception $exception) {

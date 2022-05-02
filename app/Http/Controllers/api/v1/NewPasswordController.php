@@ -63,7 +63,7 @@ class NewPasswordController extends Controller
                     'msgError' => __($status)
                 ],
                 'time_execution' => microtime()
-            ], 200);
+            ], 201);
         }
 
         return response()->json([
